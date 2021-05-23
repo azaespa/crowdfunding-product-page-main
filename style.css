@@ -1,18 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap");
 
 :root {
- /* Primary */
- --cyan-moderate: hsl(176, 50%, 47%);
- --cyan-dark: hsl(176, 72%, 28%);
- /* Neutral */
- --black: hsl(0, 0%, 0%);
- --gray-dark: hsl(0, 0%, 48%);
- /* Typography */
- --ff: 'Commissioner', sans-serif;
- --fs: 16px;
- --fw-regular: 400;
- --fw-medium: 500;
- --fw-bold: 700;
+  /* Primary */
+  --cyan-moderate: hsl(176, 50%, 47%);
+  --cyan-dark: hsl(176, 72%, 28%);
+  /* Neutral */
+  --black: hsl(0, 0%, 0%);
+  --gray-light: rgb(245, 245, 245);
+  --gray-dark: hsl(0, 0%, 48%);
+  --gray-dark-50: hsla(0, 0%, 75%, 0.5);
+  /* Typography */
+  --ff: "Commissioner", sans-serif;
+  --fs: 16px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+body,
+.main-nav-company-logo {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+button {
+ cursor: pointer;
+ background-color: transparent;
+ border-style: none;
+}
+
+.showing {
+ display: block;
+}
+
+.main-nav-links,
+.bookmark-this-desktop {
+ display: none;
+}
+
+body {
+ font-family: var(--ff);
+ font-size: var(--fs);
+ font-weight: var(--fw-regular);
+ background-color: var(--gray-light);
+
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+
+header {
+  background-color: black;
+  width: 100%;
+}
+
+.main-nav {
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav-button {
+ margin-left: auto;
+}
+
+.main-nav-icon {
+  width: 18px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  border-radius: 1px;
+}
+
+section {
+ width: 90%;
+ background-color: white;
+ border: 1px solid var(--gray-dark-50);
 }
 
 .attribution {
