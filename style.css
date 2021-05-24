@@ -35,6 +35,10 @@ button {
   background-color: var(--cyan-moderate);
 }
 
+p {
+  color: var(--gray-dark);
+}
+
 .main-nav-links,
 .bookmark-this.desktop,
 .modal {
@@ -137,7 +141,6 @@ section > * {
 .introduction-section-product-description {
   font-size: 0.9rem;
   line-height: 1.4rem;
-  color: var(--gray-dark);
 }
 
 .introduction-section-buttons {
@@ -244,7 +247,7 @@ section > * {
   font-size: 1rem;
 }
 
-.about-section-card-header.subheader {
+.subheader {
   color: var(--cyan-moderate);
   font-weight: var(--fw-medium);
 }
@@ -255,7 +258,8 @@ section > * {
   color: var(--gray-dark);
 }
 
-.about-section-card-amount {
+.about-section-card-count,
+.modal-content-card-count {
   font-size: .9rem;
   color: var(--gray-dark);
   display: flex;
@@ -264,7 +268,8 @@ section > * {
   gap: .5rem;
 }
 
-.about-section-card-amount span{
+.about-section-card-count span,
+.modal-content-card-count span{
   font-size: 2rem;
   font-weight: var(--fw-bold);
   color: black;
@@ -312,7 +317,7 @@ section > * {
 .modal-content {
   box-sizing: border-box;
   margin-top: 8rem;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   width: 90%;
   background-color: white;
   border-radius: 10px;
@@ -321,20 +326,21 @@ section > * {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .modal-content-header {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
 }
 
 .modal-content-header h2 {
   margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.1rem;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
 }
 
 .modal-content-header .close-modal {
@@ -344,6 +350,46 @@ section > * {
   height: 15px;
 }
 
+.modal-content-description,
+.modal-content-card-description {
+  font-size: .9rem;
+  line-height: 1.5rem;
+}
+
+.modal-content-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal-content-card-headers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.modal-content-card-headers hgroup {
+  font-size: .8rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.modal-content-card-headers hgroup > * {
+  margin: 0;
+}
+
+.modal-content-card-select {
+  height: 15px;
+}
+
+.modal-content-card-count span {
+  font-size: 1.25rem;
+}
 
 
 @media screen and (min-width: 647px) {
