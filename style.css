@@ -35,13 +35,9 @@ button {
   background-color: var(--cyan-moderate);
 }
 
-.showing {
-  display: block;
-}
-
 .main-nav-links,
 .bookmark-this.desktop,
-.modals {
+.modal {
   display: none;
 }
 
@@ -292,6 +288,63 @@ section > * {
   cursor: not-allowed;
   background-color: var(--gray-dark);
 }
+
+.showing {
+  display: block;
+}
+
+.showing-modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  box-sizing: border-box;
+  margin-top: 8rem;
+  padding: 2rem;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.modal-content-header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.modal-content-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+
+.modal-content-header .close-modal {
+  margin-left: auto;
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+}
+
+
 
 @media screen and (min-width: 647px) {
   .background-container {
