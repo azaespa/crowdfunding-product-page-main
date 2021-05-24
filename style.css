@@ -60,7 +60,7 @@ body {
   padding-bottom: 5rem;
 }
 
-header {
+.main-header {
   position: absolute;
   top: 0;
   left: 0;
@@ -75,6 +75,7 @@ header {
 
 .main-nav-button {
   margin-left: auto;
+  background-color: transparent;
 }
 
 .main-nav-icon {
@@ -170,15 +171,56 @@ section > * {
 
 .about-section-card {
   width: 100%;
-
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.about-section-card-headers {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.about-section-card-header {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.about-section-card-header.subheader {
+  color: var(--cyan-moderate);
+  font-weight: var(--fw-medium);
+}
+
+.about-section-card-description {
+  font-size: .9rem;
+  line-height: 1.5rem;
+  color: var(--gray-dark);
+}
+
+.about-section-card-amount {
+  font-size: .9rem;
+  color: var(--gray-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+.about-section-card-amount span{
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  color: black;
+  line-height: 2rem;
 }
 
 .about-section-card-button {
-
+  height: 2.5rem;
+  width: 160px;
+  border-radius: 80px;
 }
 
 @media screen and (min-width: 647px) {
