@@ -25,38 +25,45 @@ section {
 }
 
 button {
- padding: 0;
- cursor: pointer;
- background-color: transparent;
- border-style: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
+  font-family: inherit;
+  font-weight: var(--fw-medium);
+  color: white;
+  background-color: var(--cyan-moderate);
 }
 
 .showing {
- display: block;
+  display: block;
 }
 
 .main-nav-links,
-.bookmark-this-desktop {
- display: none;
+.bookmark-this.desktop,
+.modals {
+  display: none;
 }
 
 body {
- position: relative;
- font-family: var(--ff);
- font-size: var(--fs);
- font-weight: var(--fw-regular);
- background-color: var(--gray-light);
+  position: relative;
+  font-family: var(--ff);
+  font-size: var(--fs);
+  font-weight: var(--fw-regular);
+  background-color: var(--gray-light);
 
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-bottom: 5rem;
 }
 
 header {
- position: absolute;
- top: 0;
- left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
@@ -67,7 +74,7 @@ header {
 }
 
 .main-nav-button {
- margin-left: auto;
+  margin-left: auto;
 }
 
 .main-nav-icon {
@@ -79,119 +86,141 @@ header {
 }
 
 .background-container {
- background-image: url(images/image-hero-mobile.jpg);
- background-size: contain;
- background-repeat: no-repeat;
- height: 0;
- width: 100%;
- padding-top: 85.7%; 
- /* (img-height / img-width * container-width) */
-                /* (853 / 1280 * 100) */
-                /* https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size */
+  background-image: url(images/image-hero-mobile.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 0;
+  width: 100%;
+  padding-top: 85.7%;
+  /* (img-height / img-width * container-width) */
+  /* (853 / 1280 * 100) */
+  /* https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size */
 
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 section {
- width: 90%;
- padding: 2rem 1.5rem;
- background-color: white;
- border: 1px solid var(--gray-dark-50);
- border-radius: 10px;
+  width: 90%;
+  padding: 2rem 1.5rem;
+  background-color: white;
+  border: 1px solid var(--gray-dark-50);
+  border-radius: 10px;
 
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 section > * {
- margin: 0;
+  margin: 0;
+}
+
+.introduction-section,
+.stats-section {
+  text-align: center;
 }
 
 .introduction-section {
- margin-top: -5rem;
- text-align: center;
+  margin-top: -5rem;
 }
 
 .introduction-section-product-logo {
- margin-top: -60px; /* half-height + parents padding */
+  margin-top: -60px; /* half-height + parents padding */
 }
 
 .introduction-section-product-name {
- width: 80%;
+  width: 80%;
 }
 
 .introduction-section-product-description {
- font-size: .9rem;
- line-height: 1.4rem;
- color: var(--gray-dark);
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  color: var(--gray-dark);
 }
 
 .introduction-section-buttons {
- display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
- gap: .5rem;
- width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .introduction-section-buttons .back-this-project {
- color: white;
- background-color: var(--cyan-moderate);
- font-family: inherit;
- font-weight: var(--fw-medium);
- font-size: 1rem;
- line-height: 2rem;
- height: 56px;
- width: 223.5px;
- border-radius: 28px;
+  height: 56px;
+  width: 223.5px;
+  border-radius: 28px;
+  font-size: 1rem;
+}
+
+.introduction-section-buttons .bookmark-this {
+  margin-left: auto;
+  background-color: transparent;
+}
+
+.about-section {
+  align-items: flex-start;
+}
+
+.about-section-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-section-card-button {
+
 }
 
 @media screen and (min-width: 647px) {
- .background-container {
-  background-image: url(images/image-hero-desktop.jpg);
- height: 0;
- width: 100%;
- padding-top: 27.7%; 
- }
- section {
-  width: 85%;
- }
- .introduction-section {
-  margin-top: -2rem;
- }
+  .background-container {
+    background-image: url(images/image-hero-desktop.jpg);
+    height: 0;
+    width: 100%;
+    padding-top: 27.8%;
+  }
+  section {
+    width: 85%;
+  }
+  .introduction-section {
+    margin-top: -2rem;
+  }
 }
 
 @media screen and (min-width: 888px) {
- section {
-  width: 80%;
- }
- .introduction-section {
-  margin-top: -3rem;
- }
+  section {
+    width: 80%;
+  }
+  .introduction-section {
+    margin-top: -3rem;
+  }
 }
 
 @media screen and (min-width: 952px) {
- section {
-  width: 65%;
- }
- .introduction-section {
-  margin-top: -4rem;
- }
+  section {
+    width: 65%;
+  }
+  .introduction-section {
+    margin-top: -4rem;
+  }
 }
 
 @media screen and (min-width: 1336px) {
- section {
-  width: 50%;
- }
- .introduction-section {
-  margin-top: -5rem;
- }
+  section {
+    width: 50%;
+  }
+  .introduction-section {
+    margin-top: -5rem;
+  }
 }
 
 .attribution {
