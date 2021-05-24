@@ -218,9 +218,21 @@ section > * {
 }
 
 .about-section-card-button {
-  height: 2.5rem;
+  height: 3rem;
   width: 160px;
   border-radius: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disabled-section {
+  opacity: 50%;
+}
+
+.disabled-button {
+  cursor: not-allowed;
+  background-color: var(--gray-dark);
 }
 
 @media screen and (min-width: 647px) {
