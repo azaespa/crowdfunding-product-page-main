@@ -17,6 +17,10 @@
   --fw-bold: 700;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body,
 .main-nav-company-logo,
 section {
@@ -77,14 +81,6 @@ body {
 .main-nav-button {
   margin-left: auto;
   background-color: transparent;
-}
-
-.main-nav-icon {
-  width: 18px;
-  height: 3px;
-  background-color: white;
-  margin: 3px 0;
-  border-radius: 1px;
 }
 
 .background-container {
@@ -309,6 +305,16 @@ section > * {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  animation: fadeIn 100ms forwards ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }
 
 .modal {
@@ -493,7 +499,7 @@ section > * {
   margin-right: .25rem;
 }
 
-.success button {
+.success-button {
   font-size: .9rem;
   font-weight: var(--fw-medium);
   width: 6.5rem;
