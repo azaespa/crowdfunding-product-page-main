@@ -317,8 +317,17 @@ section > * {
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0;
+  }
+}
+
 .modal {
   background-color: rgba(0,0,0,0.5);
+  transition: background-color 1s ease-in;
 }
 
 .modal-content {
