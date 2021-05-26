@@ -355,6 +355,11 @@ section > * {
   width: 100%;
 }
 
+.success .modal-content-description {
+  text-align: center;
+  margin: 0;
+}
+
 .modal-content-description,
 .modal-content-card-description {
   font-size: .9rem;
@@ -486,6 +491,14 @@ section > * {
   font-weight: var(--fw-bold);
   opacity: 50%;
   margin-right: .25rem;
+}
+
+.success button {
+  font-size: .9rem;
+  font-weight: var(--fw-medium);
+  width: 6.5rem;
+  height: 3rem;
+  border-radius: 3.25rem;
 }
 
 @media screen and (min-width: 647px) {
