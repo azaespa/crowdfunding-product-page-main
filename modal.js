@@ -4,16 +4,32 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  CLOSE_MODAL_PROJECT = MODAL_PROJECT.querySelector('.close-modal'),
  MODAL_CARD_SELECT_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select');
 
+function styleUnselectedPledge(node){
+ node.closest('.modal-content-card-container').classList.remove("selected-card");
+}
+
 function styleSelectedPledge(object){
  object.closest('.modal-content-card-container').classList.add("selected-card");
 }
 
-function handleSelectPledge(nodeList) {
+function handleSelect(node) {
+ const SELECT = node.target;
+ if(SELECT.checked === true) {
+  SELECT.closest('.modal-content-card-container').classList.add("selected-card");
+ } else {
+  
+ }
+}
+
+function handleUnselect() {
+ SELECT.closest('.modal-content-card-container').classList.remove("selected-card");
+}
+
+function modalCardSelectEventListener(nodeList){
  for(let i=0; i <nodeList.length; i++){
-  console.log(nodeList[i].checked === true)
-  if(nodeList[i].checked === true) {
-   
-  }
+  nodeList[i].addEventListener("change", handleSelect);
+  nodeList[i].addEventListener("onchange", handleUnselect);
+
  }
 }
 
@@ -30,7 +46,7 @@ function paintModal() {
  topFunction();
  MODAL_PROJECT.classList.add("showing-modal");
  CLOSE_MODAL_PROJECT.addEventListener("click", handleCloseModal);
- handleSelectPledge(MODAL_CARD_SELECT_LIST);
+ modalCardSelectEventListener(MODAL_CARD_SELECT_LIST);
 }
 
 function handleClick() {
