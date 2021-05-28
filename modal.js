@@ -6,20 +6,36 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
 
 let lastSelect = "";
 
+function removePledgeSection(node) {
+ const CONTAINER = node.closest('.modal-content-card-container');
+ const PLEDGE_SECTION = CONTAINER.querySelector(".modal-content-pledge-container");
+ PLEDGE_SECTION.classList.remove("showing");
+}
+
+function showPledgeSection(node){
+ const CONTAINER = node.closest('.modal-content-card-container');
+ const PLEDGE_SECTION = CONTAINER.querySelector(".modal-content-pledge-container");
+ PLEDGE_SECTION.classList.add("showing");
+}
+
 function styleUnselectedPledge(node){
  node.closest('.modal-content-card-container').classList.remove("selected-card");
 }
 
-function styleSelectedPledge(object){
- object.closest('.modal-content-card-container').classList.add("selected-card");
+function styleSelectedPledge(node){
+ node.closest('.modal-content-card-container').classList.add("selected-card");
 }
 
 function handleSelect(node) {
  const SELECT = node.target;
  if(SELECT.checked === true) {
-  if (lastSelect !== "") styleUnselectedPledge(lastSelect);
-  styleSelectedPledge(SELECT)
-  lastSelect = SELECT;
+  if (lastSelect !== "") { //remove selected card style
+   styleUnselectedPledge(lastSelect); 
+   removePledgeSection(lastSelect);
+  }
+  styleSelectedPledge(SELECT);
+  showPledgeSection(SELECT);
+  lastSelect = SELECT; //store most recent selected node
  }
 }
 
