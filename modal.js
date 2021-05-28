@@ -30,6 +30,10 @@ function handleUnselect() {
 function modalCardSelectEventListener(nodeList){
  for(let i=0; i <nodeList.length; i++){
   nodeList[i].addEventListener("change", handleSelect);
+  if (nodeList[i].checked === true) {
+   styleSelectedPledge(nodeList[i]);
+   lastSelect = nodeList[i];
+  }
  }
 }
 
