@@ -4,6 +4,8 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  CLOSE_MODAL_PROJECT = MODAL_PROJECT.querySelector('.close-modal'),
  MODAL_CARD_SELECT_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select');
 
+let lastSelect = "";
+
 function styleUnselectedPledge(node){
  node.closest('.modal-content-card-container').classList.remove("selected-card");
 }
@@ -15,9 +17,9 @@ function styleSelectedPledge(object){
 function handleSelect(node) {
  const SELECT = node.target;
  if(SELECT.checked === true) {
-  SELECT.closest('.modal-content-card-container').classList.add("selected-card");
- } else {
-  
+  if (lastSelect !== "") styleUnselectedPledge(lastSelect);
+  styleSelectedPledge(SELECT)
+  lastSelect = SELECT;
  }
 }
 
@@ -28,8 +30,6 @@ function handleUnselect() {
 function modalCardSelectEventListener(nodeList){
  for(let i=0; i <nodeList.length; i++){
   nodeList[i].addEventListener("change", handleSelect);
-  nodeList[i].addEventListener("onchange", handleUnselect);
-
  }
 }
 

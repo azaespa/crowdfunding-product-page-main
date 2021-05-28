@@ -392,7 +392,7 @@ section > * {
 }
 
 .modal-content-card {
-  padding: 1.5rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -400,6 +400,7 @@ section > * {
 
 .selected-card {
   border: 2px solid var(--cyan-moderate);
+  transition: border 100ms ease-in-out;
 }
 
 .modal-content-card-headers {
