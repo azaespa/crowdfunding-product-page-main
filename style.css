@@ -400,7 +400,6 @@ section > * {
 
 .selected-card {
   border: 2px solid var(--cyan-moderate);
-  transition: border 100ms ease-in-out;
 }
 
 .modal-content-card-headers {

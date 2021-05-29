@@ -3,12 +3,21 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  MODAL_PROJECT = document.querySelector('.modal.project'),
  CLOSE_MODAL_PROJECT = MODAL_PROJECT.querySelector('.close-modal'),
  MODAL_CARD_SELECT_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select'),
- PLEDGE_SUBMIT_LIST = MODAL_PROJECT.querySelectorAll(".pledge-submit");
-
+ PLEDGE_SUBMIT_LIST = MODAL_PROJECT.querySelectorAll('.pledge-submit');
+ MODAL_SUCCESS = document.querySelector('.modal.success'),
+ MODAL_SUCCESS_BTN = MODAL_SUCCESS.querySelector('.success-button');
+ 
 let lastSelect = "";
 
+function paintModalSuccess(){
+ topFunction();
+ MODAL_SUCCESS.classList.add("showing-modal");
+ MODAL_PROJECT.classList.remove("showing-modal");
+ MODAL_SUCCESS_BTN.addEventListener('click', handleCloseModal);
+}
+
 function handleSubmit(event){
- console.log(event.target);
+ paintModalSuccess();
 }
 
 function pledgeSubmitEventListener(nodeList){
@@ -40,12 +49,12 @@ function styleSelectedPledge(node){
 function handleSelect(node) {
  const SELECT = node.target;
  if(SELECT.checked === true) {
+  styleSelectedPledge(SELECT);
+  showPledgeSection(SELECT);
   if (lastSelect !== "") { //remove selected card style
    styleUnselectedPledge(lastSelect); 
    removePledgeSection(lastSelect);
   }
-  styleSelectedPledge(SELECT);
-  showPledgeSection(SELECT);
   lastSelect = SELECT; //store most recent selected node
  }
 }
@@ -66,8 +75,10 @@ function topFunction(){
  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-function handleCloseModal() {
- MODAL_PROJECT.classList.remove("showing-modal");
+function handleCloseModal(event) {
+ const currentBtn = event.target;
+ const currentModal = currentBtn.closest('.modal');
+ currentModal.classList.remove("showing-modal");
 }
 
 function paintModal() {
