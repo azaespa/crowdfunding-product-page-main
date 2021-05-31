@@ -101,7 +101,7 @@
           Backer member list.
         </p>
         <p class="about-section-card-count"><span>101</span> left</p>
-        <button class="about-section-card-button">Select Reward</button>
+        <button class="about-section-card-button" id="bamboo-pledge-btn">Select Reward</button>
       </section>
       <section class="about-section-card">
         <header class="about-section-card-headers">
@@ -115,7 +115,7 @@
           you. You’ll be added to our Backer member list. Shipping is included.
         </p>
         <p class="about-section-card-count"><span>64</span> left</p>
-        <button class="about-section-card-button">Select Reward</button>
+        <button class="about-section-card-button" id="black-edition-pledge-btn">Select Reward</button>
       </section>
       <section class="about-section-card disabled-section">
         <header class="about-section-card-headers">
@@ -169,7 +169,7 @@
               <div class="pledge-form-container">
                 <form action="" class="pledge-form">
                   <div class="pledge-input-container">
-                    <input type="text" class="pledge-input" value="25" />
+                    <input type="text" class="pledge-input" id="no-reward-input" value="0" disabled/>
                   </div>
                 </form>
                 <button class="pledge-submit" id="no-reward-btn">Continue</button>
@@ -180,7 +180,7 @@
         <section class="modal-content-card-container">
           <div class="modal-content-card">
             <header class="modal-content-card-headers">
-              <input type="radio" class="modal-content-card-select" name="select-pledge"/>
+              <input type="radio" class="modal-content-card-select" id="bamboo-select" name="select-pledge"/>
               <hgroup>
                 <h3 class="primary">Bamboo Stand</h3>
                 <h3 class="subheader">Pledge $25 or more</h3>
@@ -199,7 +199,7 @@
               <div class="pledge-form-container">
                 <form action="" class="pledge-form">
                   <div class="pledge-input-container">
-                    <input type="text" class="pledge-input" value="25" />
+                    <input type="text" class="pledge-input" id="bamboo-input" value="25" />
                   </div>
                 </form>
                 <button class="pledge-submit" id="bamboo-btn">Continue</button>
@@ -211,7 +211,7 @@
         <section class="modal-content-card-container">
           <div class="modal-content-card">
             <header class="modal-content-card-headers">
-              <input type="radio" class="modal-content-card-select" name="select-pledge"/>
+              <input type="radio" class="modal-content-card-select" id="black-edition-select" name="select-pledge"/>
               <hgroup>
                 <h3 class="primary">Black Edition Stand</h3>
                 <h3 class="subheader">Pledge $75 or more</h3>
@@ -230,7 +230,7 @@
               <div class="pledge-form-container">
                 <form action="" class="pledge-form">
                   <div class="pledge-input-container">
-                    <input type="text" class="pledge-input" value="25" />
+                    <input type="text" class="pledge-input" id="black-edition-input" value="75"/>
                   </div>
                 </form>
                 <button class="pledge-submit" id="black-edition-btn">Continue</button>
@@ -261,7 +261,7 @@
               <div class="pledge-form-container">
                 <form action="" class="pledge-form">
                   <div class="pledge-input-container">
-                    <input type="text" class="pledge-input" value="25" />
+                    <input type="text" class="pledge-input" id="mahogany-input" value="200" />
                   </div>
                 </form>
                 <button class="pledge-submit" id="mahogany-btn">Continue</button>

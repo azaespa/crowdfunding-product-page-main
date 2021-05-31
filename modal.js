@@ -1,5 +1,7 @@
 const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  BACK_THIS_PROJECT_BTN = INTRODUCTION_SECTION.querySelector('.back-this-project'),
+ ABOUT_SECTION = document.querySelector('.about-section'),
+ PLEDGE_BTN_LIST = ABOUT_SECTION.querySelectorAll('.about-section-card-button'),
  MODAL_PROJECT = document.querySelector('.modal.project'),
  CLOSE_MODAL_PROJECT = MODAL_PROJECT.querySelector('.close-modal'),
  MODAL_CARD_SELECT_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select'),
@@ -10,9 +12,9 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
 let lastSelect = "";
 
 function paintModalSuccess(){
- topFunction();
- MODAL_SUCCESS.classList.add("showing-modal");
  MODAL_PROJECT.classList.remove("showing-modal");
+ MODAL_SUCCESS.classList.add("showing-modal");
+ topFunction();
  MODAL_SUCCESS_BTN.addEventListener('click', handleCloseModal);
 }
 
@@ -62,11 +64,6 @@ function handleSelect(node) {
 function modalCardSelectEventListener(nodeList){
  for(let i=0; i <nodeList.length; i++){
   nodeList[i].addEventListener("change", handleSelect);
-  if (nodeList[i].checked === true) {
-   styleSelectedPledge(nodeList[i]);
-   showPledgeSection(nodeList[i]);
-   lastSelect = nodeList[i];
-  }
  }
 }
 
@@ -81,21 +78,60 @@ function handleCloseModal(event) {
  currentModal.classList.remove("showing-modal");
 }
 
-function paintModal() {
+function resetAllStyle(nodeList){
+ for(let i=0; i<nodeList.length; i++){
+  nodeList[i].checked = false;
+  styleUnselectedPledge(nodeList[i]); 
+  removePledgeSection(nodeList[i]);
+ }
+}
+
+function paintModal(ABOUT_BTN) {
  topFunction();
+ resetAllStyle(MODAL_CARD_SELECT_LIST);
  MODAL_PROJECT.classList.add("showing-modal");
  CLOSE_MODAL_PROJECT.addEventListener("click", handleCloseModal);
  modalCardSelectEventListener(MODAL_CARD_SELECT_LIST);
+
  pledgeSubmitEventListener(PLEDGE_SUBMIT_LIST)
+ switch(true){
+  case ABOUT_BTN.id === "bamboo-pledge-btn":
+   MODAL_PROJECT.querySelector("#bamboo-select").checked = true;
+   styleSelectedPledge(MODAL_PROJECT.querySelector("#bamboo-select"));
+   showPledgeSection(MODAL_PROJECT.querySelector("#bamboo-select"));
+   lastSelect = MODAL_PROJECT.querySelector("#bamboo-select");
+   break;
+  case ABOUT_BTN.id === "black-edition-pledge-btn":
+    MODAL_PROJECT.querySelector("#black-edition-select").checked = true;
+    styleSelectedPledge(MODAL_PROJECT.querySelector("#black-edition-select"));
+    showPledgeSection(MODAL_PROJECT.querySelector("#black-edition-select"));
+    lastSelect = MODAL_PROJECT.querySelector("#black-edition-select");
+    break;
+  default:
+   break;
+ }
 }
 
 function handleClick() {
- paintModal();
+ paintModal(BACK_THIS_PROJECT_BTN);
 
+}
+
+function handleSelectReward(event){
+ const BUTTON = event.target;
+ const BUTTON_ID = BUTTON.id;
+ paintModal(BUTTON);
+}
+
+function pledgeBtnEventListener(nodeList){
+ for(let i=0; i<nodeList.length; i++){
+  nodeList[i].addEventListener("click", handleSelectReward);
+ }
 }
 
 function init() {
  BACK_THIS_PROJECT_BTN.addEventListener('click', handleClick);
+ pledgeBtnEventListener(PLEDGE_BTN_LIST);
 }
 
 init();

@@ -508,6 +508,10 @@ section > * {
   outline: none;
 }
 
+.pledge-input:disabled {
+  background-color: transparent;
+}
+
 .pledge-input-container::before {
   content: "$";
   color: var(--gray-dark);
