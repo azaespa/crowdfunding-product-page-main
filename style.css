@@ -164,6 +164,15 @@ section > * {
 
 .stats-section {
   gap: 0;
+  padding: 2rem;
+}
+
+.stat-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .stat {
@@ -187,9 +196,11 @@ section > * {
   margin-top: .75rem;
   font-size: .9rem;
   color: var(--gray-dark);
+  width: auto;
 }
 
 .stats-section .progress {
+  margin-top: 0;
   width: 100%;
   height: .75rem;
   background-color: var(--gray-light);
@@ -544,6 +555,7 @@ section > * {
     width: 100%;
     padding-top: 27.8%;
   }
+  
   section,
   .modal-content {
     width: 85%;
@@ -551,6 +563,47 @@ section > * {
   
   .introduction-section {
     margin-top: -2rem;
+  }
+
+  .stats-section{
+    text-align: left;
+  }
+
+  .stat-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat {
+    padding-bottom: 0;
+    padding-right: 2rem;
+  }
+
+  .stat:not(:first-child) {
+    padding-top: 0;
+    padding-left: 2rem;
+  }
+
+  .stat.total-backers {
+    border-top: none;
+    border-bottom: none;
+    
+  }
+
+  .stat.total-backers,
+  .stat.days-left{
+    border-left: 1px solid var(--gray-dark-50);
+  }
+
+
+  .stat p {
+    width: 14ch;
+  }
+
+  .stats-section .progress {
+    margin-top: 2rem;
   }
 
   .about-section-card-footer {
