@@ -544,9 +544,11 @@ section > * {
     width: 100%;
     padding-top: 27.8%;
   }
-  section {
+  section,
+  .modal-content {
     width: 85%;
   }
+  
   .introduction-section {
     margin-top: -2rem;
   }
@@ -575,7 +577,8 @@ section > * {
 }
 
 @media screen and (min-width: 888px) {
-  section {
+  section,
+  .modal-content {
     width: 80%;
   }
   .introduction-section {
@@ -584,7 +587,8 @@ section > * {
 }
 
 @media screen and (min-width: 952px) {
-  section {
+  section,
+  .modal-content {
     width: 65%;
   }
   .introduction-section {
@@ -593,7 +597,8 @@ section > * {
 }
 
 @media screen and (min-width: 1336px) {
-  section {
+  section,
+  .modal-content {
     width: 50%;
   }
   .introduction-section {
