@@ -255,6 +255,14 @@ section > * {
   color: var(--gray-dark);
 }
 
+.about-section-card-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .about-section-card-count,
 .modal-content-card-count {
   font-size: .9rem;
@@ -542,6 +550,13 @@ section > * {
   .introduction-section {
     margin-top: -2rem;
   }
+
+  .about-section-card-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .modal-content-pledge {
     flex-direction: row;
   }
