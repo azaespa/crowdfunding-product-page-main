@@ -4,7 +4,7 @@ const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  PLEDGE_BTN_LIST = ABOUT_SECTION.querySelectorAll('.about-section-card-button'),
  MODAL_PROJECT = document.querySelector('.modal.project'),
  CLOSE_MODAL_PROJECT = MODAL_PROJECT.querySelector('.close-modal'),
- MODAL_CARD_SELECT_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select'),
+ MODAL_CARD_RADIO_LIST = MODAL_PROJECT.querySelectorAll('.modal-content-card-select'),
  PLEDGE_SUBMIT_LIST = MODAL_PROJECT.querySelectorAll('.pledge-submit');
  MODAL_SUCCESS = document.querySelector('.modal.success'),
  MODAL_SUCCESS_BTN = MODAL_SUCCESS.querySelector('.success-button');
@@ -18,14 +18,8 @@ function paintModalSuccess(){
  MODAL_SUCCESS_BTN.addEventListener('click', handleCloseModal);
 }
 
-function handleSubmit(event){
+function handleSubmit(){
  paintModalSuccess();
-}
-
-function pledgeSubmitEventListener(nodeList){
- for(let i=0; i <nodeList.length; i++){
-  nodeList[i].addEventListener("click", handleSubmit);
- }
 }
 
 function removePledgeSection(node) {
@@ -48,90 +42,101 @@ function styleSelectedPledge(node){
  node.closest('.modal-content-card-container').classList.add("selected-card");
 }
 
-function handleSelect(node) {
- const SELECT = node.target;
- if(SELECT.checked === true) {
-  styleSelectedPledge(SELECT);
-  showPledgeSection(SELECT);
+function handleRadio(event) {
+ const RADIO = event.target;
+ if(RADIO.checked === true) {
+  styleSelectedPledge(RADIO);
+  showPledgeSection(RADIO);
   if (lastSelect !== "") { //remove selected card style
    styleUnselectedPledge(lastSelect); 
    removePledgeSection(lastSelect);
   }
-  lastSelect = SELECT; //store most recent selected node
+  lastSelect = RADIO; //store most recent selected node
  }
 }
 
-function modalCardSelectEventListener(nodeList){
- for(let i=0; i <nodeList.length; i++){
-  nodeList[i].addEventListener("change", handleSelect);
- }
+function styleSelectedPledgeById(btnId){
+  switch(true){
+    case btnId === "bamboo-pledge-btn":
+     MODAL_PROJECT.querySelector("#bamboo-select").checked = true;
+     styleSelectedPledge(MODAL_PROJECT.querySelector("#bamboo-select"));
+     showPledgeSection(MODAL_PROJECT.querySelector("#bamboo-select"));
+     lastSelect = MODAL_PROJECT.querySelector("#bamboo-select");
+     break;
+    case btnId === "black-edition-pledge-btn":
+      MODAL_PROJECT.querySelector("#black-edition-select").checked = true;
+      styleSelectedPledge(MODAL_PROJECT.querySelector("#black-edition-select"));
+      showPledgeSection(MODAL_PROJECT.querySelector("#black-edition-select"));
+      lastSelect = MODAL_PROJECT.querySelector("#black-edition-select");
+      break;
+    default:
+     break;
+   }
 }
 
-function topFunction(){
- document.body.scrollTop = 0; // For Safari
- document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+function pledgeSubmitEventListener(nodeList){
+  for(let i=0; i <nodeList.length; i++){
+   nodeList[i].addEventListener("click", handleSubmit);
+  }
+ }
+
+function modalCardRadioEventListener(nodeList){
+  for(let i=0; i <nodeList.length; i++){
+   nodeList[i].addEventListener("change", handleRadio);
+  }
+ }
 
 function handleCloseModal(event) {
- const currentBtn = event.target;
- const currentModal = currentBtn.closest('.modal');
- currentModal.classList.remove("showing-modal");
-}
+  const currentCloseBtn = event.target;
+  const currentlyOpenedModal = currentCloseBtn.closest('.modal');
+  currentlyOpenedModal.classList.remove("showing-modal");
+ } 
 
-function resetAllStyle(nodeList){
- for(let i=0; i<nodeList.length; i++){
-  nodeList[i].checked = false;
-  styleUnselectedPledge(nodeList[i]); 
-  removePledgeSection(nodeList[i]);
+function modalContentEventListeners(){
+  CLOSE_MODAL_PROJECT.addEventListener("click", handleCloseModal);
+  modalCardRadioEventListener(MODAL_CARD_RADIO_LIST);
+  pledgeSubmitEventListener(PLEDGE_SUBMIT_LIST);
  }
-}
+
+function resetModalContentStyle(nodeList){
+  for(let node of nodeList){
+   node.checked = false;
+   styleUnselectedPledge(node); 
+   removePledgeSection(node);
+  }
+ }
+
+function topFunction(){
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+ }
 
 function paintModal(ABOUT_BTN) {
  topFunction();
- resetAllStyle(MODAL_CARD_SELECT_LIST);
+ resetModalContentStyle(MODAL_CARD_RADIO_LIST);
+ modalContentEventListeners();
  MODAL_PROJECT.classList.add("showing-modal");
- CLOSE_MODAL_PROJECT.addEventListener("click", handleCloseModal);
- modalCardSelectEventListener(MODAL_CARD_SELECT_LIST);
-
- pledgeSubmitEventListener(PLEDGE_SUBMIT_LIST)
- switch(true){
-  case ABOUT_BTN.id === "bamboo-pledge-btn":
-   MODAL_PROJECT.querySelector("#bamboo-select").checked = true;
-   styleSelectedPledge(MODAL_PROJECT.querySelector("#bamboo-select"));
-   showPledgeSection(MODAL_PROJECT.querySelector("#bamboo-select"));
-   lastSelect = MODAL_PROJECT.querySelector("#bamboo-select");
-   break;
-  case ABOUT_BTN.id === "black-edition-pledge-btn":
-    MODAL_PROJECT.querySelector("#black-edition-select").checked = true;
-    styleSelectedPledge(MODAL_PROJECT.querySelector("#black-edition-select"));
-    showPledgeSection(MODAL_PROJECT.querySelector("#black-edition-select"));
-    lastSelect = MODAL_PROJECT.querySelector("#black-edition-select");
-    break;
-  default:
-   break;
- }
-}
-
-function handleClick() {
- paintModal(BACK_THIS_PROJECT_BTN);
-
+ styleSelectedPledgeById(ABOUT_BTN.id);
 }
 
 function handleSelectReward(event){
  const BUTTON = event.target;
- const BUTTON_ID = BUTTON.id;
  paintModal(BUTTON);
 }
 
-function pledgeBtnEventListener(nodeList){
- for(let i=0; i<nodeList.length; i++){
-  nodeList[i].addEventListener("click", handleSelectReward);
+function pledgeSelectRewardBtnEventListener(nodeList){
+ for(let node of nodeList){
+  node.addEventListener("click", handleSelectReward);
  }
 }
 
+function handleClickProject() {
+  paintModal(BACK_THIS_PROJECT_BTN);
+ }
+
 function init() {
- BACK_THIS_PROJECT_BTN.addEventListener('click', handleClick);
- pledgeBtnEventListener(PLEDGE_BTN_LIST);
+ BACK_THIS_PROJECT_BTN.addEventListener('click', handleClickProject);
+ pledgeSelectRewardBtnEventListener(PLEDGE_BTN_LIST);
 }
 
 init();
