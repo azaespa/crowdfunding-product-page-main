@@ -38,6 +38,11 @@ button {
   font-weight: var(--fw-medium);
   color: white;
   background-color: var(--cyan-moderate);
+  transition: background-color 100ms ease-in;
+}
+
+button:not(.main-nav-button, .bookmark-this, .close-modal):hover {
+  background-color: var(--cyan-dark);
 }
 
 p {
