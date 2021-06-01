@@ -133,15 +133,23 @@ function pledgeSelectRewardBtnEventListener(nodeList){
  }
 }
 
+function unstyleBookmarkContainer() {
+  BOOKMARK_TEXT.style.color = "initial";
+  BOOKMARK_TEXT.innerText = "Bookmark";
+  BOOKMARK_IMG.src = 'images/icon-bookmark.svg';
+}
+
+function styleBookmarkContainer() {
+  BOOKMARK_TEXT.style.color = "var(--cyan-dark)";
+  BOOKMARK_TEXT.innerText = "Bookmarked";
+  BOOKMARK_IMG.src = 'images/icon-bookmarked.svg';
+}
+
 function handleClickBookmark() {
   if(BOOKMARK_TEXT.innerText !== "Bookmarked"){
-    BOOKMARK_TEXT.style.color = "var(--cyan-dark)";
-    BOOKMARK_TEXT.innerText = "Bookmarked";
-    BOOKMARK_IMG.src = 'images/icon-bookmarked.svg';
+    styleBookmarkContainer();
   } else {
-    BOOKMARK_TEXT.style.color = "initial";
-    BOOKMARK_TEXT.innerText = "Bookmark";
-    BOOKMARK_IMG.src = 'images/icon-bookmark.svg';
+    unstyleBookmarkContainer();
   }
 }
 
