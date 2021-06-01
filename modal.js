@@ -1,5 +1,8 @@
 const INTRODUCTION_SECTION = document.querySelector('.introduction-section'),
  BACK_THIS_PROJECT_BTN = INTRODUCTION_SECTION.querySelector('.back-this-project'),
+ BOOKMARK_CONTAINER = INTRODUCTION_SECTION.querySelector('.bookmark-this-container'),
+ BOOKMARK_IMG = BOOKMARK_CONTAINER.querySelector('img'),
+ BOOKMARK_TEXT = BOOKMARK_CONTAINER.querySelector('.bookmark-text'),
  ABOUT_SECTION = document.querySelector('.about-section'),
  PLEDGE_BTN_LIST = ABOUT_SECTION.querySelectorAll('.about-section-card-button'),
  MODAL_PROJECT = document.querySelector('.modal.project'),
@@ -130,12 +133,25 @@ function pledgeSelectRewardBtnEventListener(nodeList){
  }
 }
 
+function handleClickBookmark() {
+  if(BOOKMARK_TEXT.innerText !== "Bookmarked"){
+    BOOKMARK_TEXT.style.color = "var(--cyan-dark)";
+    BOOKMARK_TEXT.innerText = "Bookmarked";
+    BOOKMARK_IMG.src = 'images/icon-bookmarked.svg';
+  } else {
+    BOOKMARK_TEXT.style.color = "initial";
+    BOOKMARK_TEXT.innerText = "Bookmark";
+    BOOKMARK_IMG.src = 'images/icon-bookmark.svg';
+  }
+}
+
 function handleClickProject() {
   paintModal(BACK_THIS_PROJECT_BTN);
  }
 
 function init() {
  BACK_THIS_PROJECT_BTN.addEventListener('click', handleClickProject);
+ BOOKMARK_CONTAINER.addEventListener('click', handleClickBookmark);
  pledgeSelectRewardBtnEventListener(PLEDGE_BTN_LIST);
 }
 
