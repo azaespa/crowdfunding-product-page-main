@@ -9,6 +9,7 @@
   --gray-light: rgb(245, 245, 245);
   --gray-dark: hsl(0, 0%, 48%);
   --gray-dark-50: hsla(0, 0%, 75%, 0.5);
+  --gray-dark-25: hsla(0, 0%, 75%, 0.25);
   /* Typography */
   --ff: "Commissioner", sans-serif;
   --fs: 16px;
@@ -44,7 +45,7 @@ p {
 }
 
 .main-nav-links,
-.bookmark-this.desktop,
+.bookmark-text,
 .modal,
 .modal-content-pledge-container {
   display: none;
@@ -157,10 +158,27 @@ section > * {
   font-size: 1rem;
 }
 
-.introduction-section-buttons .bookmark-this {
-  margin-left: auto;
+.introduction-section-buttons .bookmark-this-container {
   background-color: transparent;
+  margin-left: auto;
+  color: var(--gray-dark);
+  padding-right: 0;
+  height: 3.5rem;
+  border-radius: 2rem;
+  font-weight: var(--fw-medium);
 }
+
+.bookmark-this-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bookmark-this {
+  background-color: transparent;
+  height: 100%;
+}
+
 
 .stats-section {
   gap: 0;
@@ -554,6 +572,17 @@ section > * {
     height: 0;
     width: 100%;
     padding-top: 27.8%;
+  }
+
+  .introduction-section-buttons .bookmark-this-container {
+    background-color: var(--gray-dark-25);
+    padding-right: 1.5rem;
+  }
+
+  
+
+  .bookmark-text {
+    display: block;
   }
   
   section,
