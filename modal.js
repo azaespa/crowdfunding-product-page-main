@@ -75,14 +75,14 @@ function styleSelectedPledgeById(btnId){
 }
 
 function pledgeSubmitEventListener(nodeList){
-  for(let i=0; i <nodeList.length; i++){
-   nodeList[i].addEventListener("click", handleSubmit);
+  for(let node of nodeList){
+    node.addEventListener("click", handleSubmit);
   }
  }
 
 function modalCardRadioEventListener(nodeList){
-  for(let i=0; i <nodeList.length; i++){
-   nodeList[i].addEventListener("change", handleRadio);
+  for(let node of nodeList){
+    node.addEventListener("change", handleRadio);
   }
  }
 
