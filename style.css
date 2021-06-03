@@ -50,6 +50,7 @@ p {
 }
 
 .main-nav-links,
+.mobile-nav-container,
 .bookmark-text,
 .modal,
 .modal-content-pledge-container {
@@ -84,21 +85,55 @@ body {
 .main-header {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-nav {
   padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
+  width: 90%;
 }
 
 .main-nav-button {
   display: block;
   margin-left: auto;
   background-color: transparent;
+}
+
+.mobile-nav-container.opened {
+  height: 50vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mobile-nav {
+  background-color: white;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.mobile-nav a{
+  font-size: 1.15rem;
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  color: black;
+}
+
+.mobile-nav a div {
+  padding: 1.5rem;
+}
+
+.mobile-nav a:not(:last-child) div {
+  border-bottom: 1px var(--gray-dark-25) solid;
 }
 
 .background-container {
@@ -605,6 +640,12 @@ section > * {
     padding-top: 27.8%;
   }
 
+  .main-nav,
+  section,
+  .modal-content {
+    width: 85%;
+  }
+
   .main-nav-button {
     display: none;
   }
@@ -614,6 +655,10 @@ section > * {
     gap: 1rem;
   }
 
+  .mobile-nav-container {
+    display: none;
+  }
+
   .introduction-section-buttons .bookmark-this-container {
     background-color: var(--gray-dark-25);
     padding-right: 1.5rem;
@@ -621,11 +666,6 @@ section > * {
 
   .bookmark-text {
     display: block;
-  }
-  
-  section,
-  .modal-content {
-    width: 85%;
   }
   
   .introduction-section {
@@ -697,6 +737,7 @@ section > * {
 }
 
 @media screen and (min-width: 888px) {
+  .main-nav,
   section,
   .modal-content {
     width: 80%;

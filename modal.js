@@ -20,7 +20,8 @@ const INTRODUCTION_SECTION = document.querySelector(".introduction-section"),
   MODAL_SUCCESS_BTN = MODAL_SUCCESS.querySelector(".success-button"),
   MAIN_HEADER = document.querySelector(".main-header"),
   MAIN_NAV_BTN = MAIN_HEADER.querySelector(".main-nav-button"),
-  MAIN_NAV_BTN_ICON = MAIN_NAV_BTN.querySelector("img");
+  MAIN_NAV_BTN_ICON = MAIN_NAV_BTN.querySelector("img"),
+  MOBILE_NAV = MAIN_HEADER.querySelector(".mobile-nav-container");
 
 let lastSelect = "";
 
@@ -174,22 +175,43 @@ function handleClickProject() {
   paintModal(BACK_THIS_PROJECT_BTN);
 }
 
-function setIconToClose(node) {
-  node.classList.add("opened");
+function setIconToClose() {
   MAIN_NAV_BTN_ICON.src = "images/icon-close-menu.svg";
 }
 
-function setIconToHamburger(node) {
-  node.classList.remove("opened");
+function setIconToHamburger() {
   MAIN_NAV_BTN_ICON.src = "images/icon-hamburger.svg";
 }
 
-function handleClickMainNav(event) {
-  const MAIN_NAV_BTN = event.target;
+function removeClassListOpened(...nodes){
+  nodes.forEach(node => {
+    node.classList.remove("opened");
+  });
+}
+
+function addClassListOpened(...nodes){
+ nodes.forEach(node => {
+   node.classList.add("opened");
+ });
+}
+
+function removeLinearGradientToMainNav() {
+  MAIN_HEADER.style.backgroundImage = "unset";
+}
+
+function addLinearGradientToMainNav() {
+  MAIN_HEADER.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0))";
+}
+
+function handleClickMainNav() {
   if (MAIN_NAV_BTN.classList.contains("opened")) {
-    setIconToHamburger(MAIN_NAV_BTN);
+    setIconToHamburger();
+    removeLinearGradientToMainNav();
+    removeClassListOpened(MAIN_NAV_BTN, MOBILE_NAV);
   } else {
-    setIconToClose(MAIN_NAV_BTN);
+    setIconToClose();
+    addLinearGradientToMainNav();
+    addClassListOpened(MAIN_NAV_BTN, MOBILE_NAV);
   }
 }
 
