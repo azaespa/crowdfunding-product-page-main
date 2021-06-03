@@ -15,11 +15,12 @@ const INTRODUCTION_SECTION = document.querySelector(".introduction-section"),
   MODAL_CARD_RADIO_LIST = MODAL_PROJECT.querySelectorAll(
     ".modal-content-card-select"
   ),
-  PLEDGE_SUBMIT_LIST = MODAL_PROJECT.querySelectorAll(".pledge-submit");
-(MODAL_SUCCESS = document.querySelector(".modal.success")),
-  (MODAL_SUCCESS_BTN = MODAL_SUCCESS.querySelector(".success-button")),
-  (MAIN_HEADER = document.querySelector(".main-header")),
-  (MAIN_NAV_BTN = MAIN_HEADER.querySelector(".main-nav-button"));
+  PLEDGE_SUBMIT_LIST = MODAL_PROJECT.querySelectorAll(".pledge-submit"),
+  MODAL_SUCCESS = document.querySelector(".modal.success"),
+  MODAL_SUCCESS_BTN = MODAL_SUCCESS.querySelector(".success-button"),
+  MAIN_HEADER = document.querySelector(".main-header"),
+  MAIN_NAV_BTN = MAIN_HEADER.querySelector(".main-nav-button"),
+  MAIN_NAV_BTN_ICON = MAIN_NAV_BTN.querySelector("img");
 
 let lastSelect = "";
 
@@ -173,8 +174,23 @@ function handleClickProject() {
   paintModal(BACK_THIS_PROJECT_BTN);
 }
 
-function handleClickMainNav(){
-  console.log("main nav working")
+function setIconToClose(node) {
+  node.classList.add("opened");
+  MAIN_NAV_BTN_ICON.src = "images/icon-close-menu.svg";
+}
+
+function setIconToHamburger(node) {
+  node.classList.remove("opened");
+  MAIN_NAV_BTN_ICON.src = "images/icon-hamburger.svg";
+}
+
+function handleClickMainNav(event) {
+  const MAIN_NAV_BTN = event.target;
+  if (MAIN_NAV_BTN.classList.contains("opened")) {
+    setIconToHamburger(MAIN_NAV_BTN);
+  } else {
+    setIconToClose(MAIN_NAV_BTN);
+  }
 }
 
 function init() {
