@@ -79,7 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  padding-bottom: 0 5rem 5rem;
+  padding-bottom: 10rem;
 }
 
 .main-header {
@@ -655,7 +655,7 @@ section > * {
     gap: 1rem;
   }
 
-  .mobile-nav-container {
+  .mobile-nav-container.opened {
     display: none;
   }
 
